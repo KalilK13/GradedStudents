@@ -15,27 +15,32 @@ public class Classroom {
 //        this.students = students;
         Student currentStudent;
         boolean continueloop = true;
-        while(continueloop) {
-            for (int i = 0; i < students.length; i++) {
+        if(students.length == 1){
+            this.students = students;
+        }
+        if(students.length != 1) {
+            while (continueloop) {
+                for (int i = 0; i < students.length; i++) {
 //                if(students[i] != null){
 //                    break;
 //                }
-                if (i != students.length - 1 && students[i + 1] != null) {
-                    currentStudent = students[i];
-                    students[i] = students[i + 1];
-                    students[i + 1] = currentStudent;
+                    if (i != students.length - 1 && students[i + 1] != null) {
+                        currentStudent = students[i];
+                        students[i] = students[i + 1];
+                        students[i + 1] = currentStudent;
+                    }
                 }
-            }
-            int count = 0;
-            for (int y = count + 1; y <= students.length - 1; y++) {
-                if (students[count] == null && students[y] != null) {
-                    break;
+                int count = 0;
+                for (int y = count + 1; y <= students.length - 1; y++) {
+                    if (students[count] == null && students[y] != null) {
+                        break;
+                    }
+                    if (y == students.length - 1) {
+                        this.students = students;
+                        continueloop = false;
+                    }
+                    count++;
                 }
-                if(y == students.length-1){
-                    this.students = students;
-                    continueloop = false;
-                }
-                count++;
             }
         }
     }
@@ -55,6 +60,15 @@ public class Classroom {
         return sumOfScores/count;
     }
     public void addStudent(Student student) {
+        Student[] newStudentArray = new Student[students.length + 1];
+        for (int i = 0; i < students.length; i++){
+            if(i == students.length - 1 && students[i] != null){
+                for(int x = 0; x < students.length; x++){
+                    newStudentArray[x] = students[x];
+                }
+                students = newStudentArray;
+            }
+        }
         for (int i = 0; i < students.length; i++) {
             if (students[i] == null) {
                 students[i] = student;

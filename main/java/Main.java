@@ -78,7 +78,7 @@ public class Main {
 //        classroom.removeStudent("Kalil", "Kennedy");
 
         System.out.println(classroom.getAverageExamScore());
-//        System.out.println(Arrays.toString(classroom.getStudents()));
+        System.out.println(Arrays.toString(classroom.getStudents()));
 //        classroom.getStudentsByScores();
 //        System.out.println(Arrays.toString(classroom.getStudents()));
 //        System.out.println(classroom.getGradeBook());
